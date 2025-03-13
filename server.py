@@ -17,11 +17,11 @@ def register_team():
         return jsonify({"error": "Team name is required"}), 400
 
     for team in leaderboard:
-        if team["team_name"] == team_name:
+        if team["team_name"].lower() == team_name.lower():
             return jsonify({"error": "Team already registered!"}), 400
 
     leaderboard.append({"team_name": team_name, "time": None})
-    return jsonify({"message": f"Team '{team_name}' registered!"})
+    return jsonify({"message": f"Team '{team_name}' registered!"}), 200
 
 @app.route('/submit', methods=['POST'])
 def submit_score():
@@ -33,14 +33,17 @@ def submit_score():
     if not team_name or time_taken is None:
         return jsonify({"error": "Team name and time are required"}), 400
 
+    found = False
     for team in leaderboard:
-        if team["team_name"] == team_name:
+        if team["team_name"].lower() == team_name.lower():
             team["time"] = time_taken
+            found = True
             break
-    else:
+
+    if not found:
         return jsonify({"error": "Team not found"}), 404
 
-    return jsonify({"message": f"Score submitted for '{team_name}'!"})
+    return jsonify({"message": f"Score submitted for '{team_name}'!"}), 200
 
 @app.route('/leaderboard', methods=['GET'])
 def get_leaderboard():
@@ -49,7 +52,7 @@ def get_leaderboard():
         [team for team in leaderboard if team["time"] is not None], 
         key=lambda x: x["time"]
     )
-    return jsonify(sorted_leaderboard)
+    return jsonify(sorted_leaderboard), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
