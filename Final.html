@@ -14,9 +14,10 @@
         text-align: center;
         background-color: black;
         color: white;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
         position: relative;
-        height: 100vh;
+        height: auto;
         margin: 0;
       }
 
@@ -80,6 +81,21 @@
         transform: scale(1.1) rotate(3deg);
         background: #ff4500;
       }
+      .code-container {
+        width: 80%;
+        margin: 20px auto;
+        text-align: left;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+
+    pre {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+  }
 
       @keyframes spin {
         from {
@@ -93,7 +109,9 @@
   </head>
   <body>
     <img src="aids.png" class="logo" />
-    <h1>🚀 AI & Data Science - Space Hunt 🌌</h1>
+    <h1>Department of AI & Data Science</h1>
+    <h1>- Space Hunt 🌌</h1>
+    <h2>Tech Treasure Hunt ! - Final Round</h2>
     <p>Time Taken: <span id="timer">0</span> seconds</p>
 
     <button onclick="registerTeam()">Register Team</button>
@@ -111,7 +129,104 @@
       </tr>
     </table>
 
-    <div class="black-hole"></div>
+    <h2>🔍 Code Snippets (Decrypt to Find the Word!)</h2>
+
+    <div class="code-container">
+      <h3>Snippet 1 </h3>
+      <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+int main() {
+    char cipher[] = "YOTCRIV";
+    int indices[] = {3, 2, 1, 4, 0, 6, 5};
+    putchar(cipher[indices[1]]); 
+    return 0;
+}
+      </code></pre>
+    </div>
+
+    <div class="code-container">
+      <h3>Snippet 2 <h3>
+      <pre><code class="language-python">
+def extract():
+    scrambled = "VCTYORI"
+    indices = [3, 2, 1, 0, 4, 6, 5]
+    print(scrambled[indices[-7]])  
+extract()
+      </code></pre>
+    </div>
+
+    <div class="code-container">
+      <h3>Snippet 3 </h3>
+      <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+void extract(char *arr, int index) {
+    if (index == 1) {
+        putchar(arr[index * 0]); 
+        return;
+    }
+    extract(arr, index - 2);
+}
+int main() {
+    char encoded[] = "TROIVCY";
+    extract(encoded, 6);
+    return 0;
+}
+      </code></pre>
+    </div>
+
+    <div class="code-container">
+      <h3>Snippet 4</h3>
+      <pre><code class="language-python">
+def extract():
+    jumbled = {6: 'C', 5: 'I', 4: 'O', 3: 'T', 2: 'R', 1: 'V', 0: 'Y'}
+    print(jumbled[len(jumbled) - 2]) 
+extract()
+ </code></pre>
+    </div>
+
+<div class="code-container">
+  <h3>Snippet 5 </h3>
+  <pre><code class="language-c">
+#include <stdio.h>
+int main() {
+char sequence[] = "RCTOIVY";
+int jump = 2;
+for (int i = 0; sequence[i] != '\0'; i++) {
+  if (i + jump == 5) {
+      putchar(sequence[i]); 
+  }
+}
+return 0;
+}
+  </code></pre>
+</div>
+
+<div class="code-container">
+  <h3>Snippet 6 </h3>
+  <pre><code class="language-python">
+def extract():
+letters = list("CIVROTY")
+indices = [5, 4, 3, 2, 1, 0, 6]
+print(letters[indices[2]])  
+extract()
+  </code></pre>
+</div>
+
+<div class="code-container">
+  <h3>Snippet 7</h3>
+  <pre><code class="language-c">
+#include <stdio.h>
+int main() {
+char puzzle[] = "IVTOCR Y";
+for (int i = 0; puzzle[i] != '\0'; i++) {
+  if ((i & 7) == 6) {  // Bitwise AND trick
+      putchar(puzzle[i]); 
+  }
+}
+return 0;
+}
+      </code></pre>
+    </div>
 
     <script>
       let startTime = Date.now();
