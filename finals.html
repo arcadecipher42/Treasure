@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Victory Space Hunt</title>
+    <link rel="icon" type="image/png" href="aids.png" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron&family=Press+Start+2P&display=swap");
+
+      body {
+        font-family: "Orbitron", sans-serif;
+        text-align: center;
+        background-color: black;
+        color: white;
+        overflow-x: hidden;
+        margin: 0;
+        position: relative;
+      }
+
+      .star {
+        position: absolute;
+        background: white;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: floatStars linear infinite;
+      }
+
+      @keyframes floatStars {
+        from {
+          transform: translateY(100vh);
+        }
+        to {
+          transform: translateY(-10vh);
+        }
+      }
+
+      h1 {
+        font-family: "Press Start 2P", cursive;
+        color: gold;
+        text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.8);
+      }
+      
+      table {
+        width: 50%;
+        margin: auto;
+        border-collapse: collapse;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+      }
+      th,
+      td {
+        border: 1px solid white;
+        padding: 8px;
+      }
+      th {
+        background-color: rgba(0, 191, 255, 0.8);
+      }
+      button {
+        font-size: 18px;
+        padding: 10px 20px;
+        border: none;
+        background: #00bfff;
+        cursor: pointer;
+        transition: transform 0.3s, background 0.3s;
+        border-radius: 10px;
+      }
+      button:hover {
+        transform: scale(1.1) rotate(3deg);
+        background: #ff4500;
+      }
+
+      .code-container {
+        width: 80%;
+        margin: 20px auto;
+        text-align: left;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+      }
+
+      pre {
+        background: rgba(0, 0, 0, 0.8);
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Department of AI & Data Science</h1>
+    <h1>- Space Hunt 🌌</h1>
+    <h2>Tech Treasure Hunt! - Final Round</h2>
+
+    <input type="text" id="submitTeamName" placeholder="Enter Team Name" />
+<button onclick="registerTeam()">Start</button>
+<br><br>
+<input type="text" id="submittedWord" placeholder="Enter Correct Word" />
+<button onclick="submitAnswer()">Submit Answer</button>
+
+
+    <h2>🏆 Leaderboard 🏆</h2>
+    <table id="leaderboard">
+      <tr>
+        <th>Rank</th>
+        <th>Team</th>
+        <th>Time (seconds)</th>
+      </tr>
+    </table>
+
+    <h2>🔍 Code Snippets (Decrypt to Find the Word!)</h2>
+
+    <div class="code-container">
+      <h3>Snippet 1</h3>
+      <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+int main() {
+    char cipher[] = "YOTCRIV";
+    int indices[] = {3, 2, 1, 4, 0, 6, 5};
+    putchar(cipher[indices[1]]); 
+    return 0;
+}
+      </code></pre>
+    </div>
+
+    <div class="code-container">
+      <h3>Snippet 2</h3>
+      <pre><code class="language-python">
+def extract():
+    scrambled = "VCTYORI"
+    indices = [3, 2, 1, 0, 4, 6, 5]
+    print(scrambled[indices[-7]])  
+extract()
+      </code></pre>
+    </div>
+
+    <div class="code-container">
+      <h3>Snippet 3</h3>
+      <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+void extract(char *arr, int index) {
+    if (index == 1) {
+        putchar(arr[index * 0]); 
+        return;
+    }
+    extract(arr, index - 2);
+}
+int main() {
+    char encoded[] = "TROIVCY";
+    extract(encoded, 6);
+    return 0;
+}
+      </code></pre>
+    </div>
+
+    <div class="code-container">
+        <h3>Snippet 4</h3>
+        <pre><code class="language-python">
+  def extract():
+      jumbled = {6: 'C', 5: 'I', 4: 'O', 3: 'T', 2: 'R', 1: 'V', 0: 'Y'}
+      print(jumbled[len(jumbled) - 2]) 
+  extract()
+   </code></pre>
+      </div>
+  
+  <div class="code-container">
+    <h3>Snippet 5 </h3>
+    <pre><code class="language-c">
+  #include <stdio.h>
+  int main() {
+  char sequence[] = "RCTOIVY";
+  int jump = 2;
+  for (int i = 0; sequence[i] != '\0'; i++) {
+    if (i + jump == 5) {
+        putchar(sequence[i]); 
+    }
+  }
+  return 0;
+  }
+    </code></pre>
+  </div>
+  
+  <div class="code-container">
+    <h3>Snippet 6 </h3>
+    <pre><code class="language-python">
+  def extract():
+  letters = list("CIVROTY")
+  indices = [5, 4, 3, 2, 1, 0, 6]
+  print(letters[indices[2]])  
+  extract()
+    </code></pre>
+  </div>
+  
+  <div class="code-container">
+    <h3>Snippet 7</h3>
+    <pre><code class="language-c">
+  #include <stdio.h>
+  int main() {
+  char puzzle[] = "IVTOCR Y";
+  for (int i = 0; puzzle[i] != '\0'; i++) {
+    if ((i & 7) == 6) {  // Bitwise AND trick
+        putchar(puzzle[i]); 
+    }
+  }
+  return 0;
+  }
+        </code></pre>
+      </div>
+      <script>
+      let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || {};
+      let correctWord = "VICTORY";
+      
+      function registerTeam() {
+          let teamName = document.getElementById("submitTeamName").value.trim();
+          
+          if (!teamName) {
+              alert("Enter a team name first!");
+              return;
+          }
+      
+          if (!leaderboard[teamName]) {
+              leaderboard[teamName] = { registeredAt: Date.now(), time: null };
+              localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+          }
+      
+          alert(`Welcome, ${teamName}! Your time is now being tracked.`);
+      }
+      
+      function submitAnswer() {
+          let teamName = document.getElementById("submitTeamName").value.trim();
+          let submittedWord = document.getElementById("submittedWord").value.trim().toUpperCase();
+      
+          if (!teamName || !submittedWord) {
+              alert("Enter your team name and answer!");
+              return;
+          }
+      
+          if (submittedWord !== correctWord) {
+              alert("Incorrect word! Try again.");
+              return;
+          }
+      
+          if (!leaderboard[teamName] || !leaderboard[teamName].registeredAt) {
+              alert("Please enter your team name before submitting!");
+              return;
+          }
+      
+          let now = Date.now();
+          let timeTaken = (now - leaderboard[teamName].registeredAt) / 1000; // Convert to seconds
+      
+          if (leaderboard[teamName].time === null || timeTaken < leaderboard[teamName].time) {
+              leaderboard[teamName].time = timeTaken; // Store best time
+          }
+      
+          localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+          updateLeaderboard();
+      
+          alert(`Correct answer! Your time: ${timeTaken.toFixed(2)} seconds`);
+          document.getElementById("submittedWord").value = "";
+      }
+      
+      function updateLeaderboard() {
+          let table = document.getElementById("leaderboard");
+          table.innerHTML = `
+              <tr>
+                  <th>Rank</th>
+                  <th>Team</th>
+                  <th>Time (seconds)</th>
+              </tr>
+          `;
+      
+          let sortedTeams = Object.entries(leaderboard).sort((a, b) => (a[1].time ?? Infinity) - (b[1].time ?? Infinity));
+      
+          sortedTeams.forEach(([name, data], index) => {
+              let row = table.insertRow();
+              row.innerHTML = `
+                  <td>${index + 1}</td>
+                  <td>${name}</td>
+                  <td>${data.time !== null ? data.time.toFixed(2) : "N/A"}</td>
+              `;
+          });
+      }
+      
+      // Load leaderboard on page load
+      updateLeaderboard();
+      
+
+    
+       
+
+        
+
+      function createStars() {
+        const starContainer = document.body;
+        for (let i = 0; i < 100; i++) {
+          let star = document.createElement("div");
+          star.className = "star";
+          star.style.left = Math.random() * 100 + "vw";
+          star.style.top = Math.random() * 100 + "vh";
+          star.style.animationDuration = Math.random() * 3 + 2 + "s";
+          starContainer.appendChild(star);
+        }
+      }
+
+      createStars();
+      
+    </script>
+  </body>
+</html>
